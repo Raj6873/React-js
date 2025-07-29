@@ -2,13 +2,16 @@ import "../public/css/app.css";
 
 function App() {
   return (
+    
     <div className="resume-container">
       <div className="sidebar">
         <div className="contact">
+        
+          <img src="/assets/raj-1.jpg" alt="Raj Akoliya" className="profile-pic" />
           <h2>Raj Akoliya</h2>
-          <img src="/assets/raj.jpg" alt="Raj Akoliya" className="profile-pic" />
+          <h3>Man Stack Developer</h3>
           <p>📞 +91 7861821691</p>
-          <p>📧 akoliyaraj62@gmail.com</p>
+          <a>📧 akoliyaraj62@gmail.com</a>
           <p>📍 Surat, Gujarat</p>
         </div>
 
@@ -62,7 +65,7 @@ function App() {
 
       <div className="main">
         <section className="about">
-          <h2>About Me :</h2>
+          <h2>Profile :</h2>
           <p>
             I am a  Full Stack Developer with a background in sales and communication. I specialize in building dynamic,
             responsive web applications using the MERN stack (HTML, CSS, JavaScript, Bootstrap, j-Query Media-Query And  Node.js Experience). I thrive on solving
