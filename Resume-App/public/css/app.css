@@ -1,0 +1,151 @@
+/* Reset and Base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50; /* Darker text for better readability */
+  background: #a19999;
+  background-size: cover;
+  background-position: center;
+}
+
+a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #005999;
+  text-decoration: underline;
+}
+
+.resume-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 30px auto;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+}
+
+.sidebar h2, .sidebar h3, .sidebar h4 {
+  color: #ffffff;
+}
+.profile-pic {
+  display: block;
+  width: 150px;
+  height: 150px;
+  font-size: 30px;
+  border-radius: 60%;
+  margin: 0 auto 20px auto; /* Center horizontally */
+  object-fit: cover; /* Ensures it fills the circle without distortion */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border: 3px solid #ecf0f1;
+} 
+
+
+.skills ul,
+.language ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skill-category li,
+.language li {
+  padding: 5px 0;
+  transition: background 0.3s ease;
+}
+
+.skill-category li:hover,
+.language li:hover {
+  background: rgba(236, 240, 241, 0.2);
+  cursor: pointer;
+}
+
+/* Main Section */
+.main {
+  width: 70%;
+  padding: 30px;
+  background: #fff;
+}
+
+.main h2 {
+  color: #34495e;
+  border-bottom: 2px solid #0077cc;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.main h3 {
+  margin-top: 20px;
+  color: #2c3e50;
+}
+
+.job, .project {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-top: 15px;
+  border-left: 4px solid #3498db;
+  font-size: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #0077cc;
+  transition: background 0.3s ease;
+}
+
+.job:hover, .project:hover {
+  background: #eaf2f8;
+}
+
+/* Links Section */
+.links a {
+  display: inline-block;
+  margin-right: 15px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: #2980b9;
+}
+
+/* Download Button */
+.download-btn {
+  margin-top: 30px;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.download-btn:hover {
+  background-color: #005999;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .resume-container {
+    flex-direction: column;
+  }
+  .sidebar, .main {
+    width: 100%;
+  }
+}
+
+/* Hide download button in print */
+@media print {
+  .download-btn {
+    display: none;
+  }
+}
