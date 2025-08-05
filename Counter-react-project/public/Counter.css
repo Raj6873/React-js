@@ -1,0 +1,100 @@
+/* public/Counter.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1e1f31, #3c3d5d);
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  padding: 20px;
+  width: 90%;
+  max-width: 380px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.counter-img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+p {
+  color: #bbb;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.count {
+  font-size: 70px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  min-width: 90px;
+}
+
+.plus {
+  background: linear-gradient(135deg, #00ffdd, #0099cc);
+  color: #000;
+}
+
+.minus {
+  background: linear-gradient(135deg, #ffcc00, #ff9933);
+  color: #000;
+}
+
+.reset {
+  background: linear-gradient(135deg, #ff4d4f, #d9363e);
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.footer {
+  font-size: 13px;
+  color: #aaa;
+}
