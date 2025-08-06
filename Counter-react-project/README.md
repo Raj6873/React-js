@@ -1,5 +1,4 @@
-# 🌟 Pro Counter App
-
+React JS
 A smooth, modern, and responsive React-based counter application. Built with simplicity and elegance, this app allows users to increment, decrement, and reset a counter within the range **0 to 10**.
 
 ![Counter Icon](file:///C:/Users/jb/Downloads/raj-1.jpg)
@@ -39,3 +38,7 @@ npm install
 
 # Start the development server
 npm start
+
+
+👨‍💻 Author
+Made with ❤️ by Raj Akoliya
