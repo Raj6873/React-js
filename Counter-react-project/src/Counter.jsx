@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../public/Counter.css";
+import "../public/css/Counter.css";
 
 const App = () => {
   const [count, setCount] = useState(0);
