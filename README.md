@@ -2,8 +2,6 @@
 
 A smooth, modern, and responsive React-based counter application. Built with simplicity and elegance, this app allows users to increment, decrement, and reset a counter within the range **0 to 10**.
 
-![Counter Icon](i)
-
 ## 🚀 Features
 
 - ✅ Beautiful glassmorphism UI
