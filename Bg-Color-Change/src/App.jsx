@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
 export default function App() {
-  const [color, setcolor] = useState("white");
+  const [color, setcolor] = useState("");
 
-  const  colorList = ["green", "red", "pink",];
+  const  colorList = ["green", "red", "blue","skyblue","orange","black"];
   return (
     <div className='w-full h-screen ' style={{ backgroundColor: color }}>
 
@@ -16,11 +16,15 @@ export default function App() {
           </a>
         
           <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-              {colorList.map((val,index)=> <button key={index}type="button" onClick={() => setcolor("green")} className="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">{val}</button>)}
-            
+              {colorList.map((val,index)=> <button key={index}type="button" onClick={() => setcolor(val)} className={`text-white bg-gradient-to-r from-${val}-500 via-${val}-600 to-${val}-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-${val}-300 dark:focus:ring-${val}-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2`}>{val[0].toUpperCase()+val.slice(1,val.length)}</button>
+              )}
           </div>
         </div>
       </nav>
+            <div>
+              <h1>hello</h1>
+            </div>
     </div>
+    
   )
 }
