@@ -469,7 +469,11 @@ function App() {
                 <td>{stud.division}</td>
                 <td>{stud.phone}</td>
                 <td>{stud.address}</td>
-                <td></td>
+                <td>
+                  <button className="bg-danger">del</button> 
+                  
+                  <button className="bg-danger">edit</button>
+                </td>
               </tr>
             ))}
           </tbody>
