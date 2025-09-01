@@ -16,7 +16,7 @@ function NavBar() {
                             className="h-8 w-auto"
                             alt="Logo"
                         />
-                        <span className="text-xl font-bold text-gray-800 dark:text-white">Student</span>
+                        <span className="text-xl font-bold text-gray-800 dark:text-white">Student Portel App</span>
                     </a>
 
                     {/* Desktop Menu */}

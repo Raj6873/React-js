@@ -1,200 +1,171 @@
 import { useState } from "react";
 
-function StudentForm() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    gender: "",
-    std: "",
-    hobby: [] as string[],
-  });
+function SubmitStudents() {
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
+  const [std, setStd] = useState("");
+  const [hobby, setHobby] = useState<string[]>([]);
 
-  const allStd: string[] = [
-    "Nursery","LKG","UKG", "1st", "2nd", "3rd", "4th", "5th",
-    "6th", "7th", "8th", "9th", "10th",
-    "11th", "12th",
+  const allStd = [
+     "Nursery","LKG","UKG","1st", "2nd", "3rd", "4th", "5th", "6th",
+    "7th", "8th", "9th", "10th", "11th", "12th"
   ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleHobbyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleHobbyChange = (event: any) => {
     const { value, checked } = event.target;
-    setFormData((prev) => ({
-      ...prev,
-      hobby: checked ? [...prev.hobby, value] : prev.hobby.filter((h) => h !== value),
-    }));
+    setHobby((prev) =>
+      checked ? [...prev, value] : prev.filter((item) => item !== value)
+    );
   };
 
-  const submitStudentForm = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log(formData);
-    // Reset the form after submission
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      gender: "",
-      std: "",
-      hobby: [],
-    });
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const student = {
+      firstName: fname,
+      lastName: lname,
+      email,
+      phone,
+      gender,
+      std,
+      hobby,
+    };
+    console.log(student);
+
+    // Reset
+    setFname(""); setLname(""); setEmail(""); setPhone("");
+    setGender(""); setStd(""); setHobby([]);
   };
 
   return (
-    <div className="flex justify-center items-center p-4 min-h-screen bg-gray-900">
-      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden p-8 md:p-12">
-        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-2">
-          Student Registration
+    <div className="min-h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-3xl bg-white shadow-2xl rounded-3xl overflow-hidden p-10">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
+          🎓 Student Registration Form
         </h2>
-        <p className="text-center text-gray-500 mb-8">
-          Please provide your details to register.
-        </p>
 
-        <form onSubmit={submitStudentForm} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-1">
-                First Name
-              </label>
-              <input
-                id="firstName"
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition duration-300"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-1">
-                Last Name
-              </label>
-              <input
-                id="lastName"
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition duration-300"
-                required
-              />
-            </div>
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
+          {/* First Name */}
+          <div>
+            <label className="block mb-2 text-sm font-semibold text-gray-700">First Name</label>
+            <input
+              type="text"
+              value={fname}
+              onChange={(e) => setFname(e.target.value)}
+              placeholder="John"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
           </div>
 
+          {/* Last Name */}
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
-              Email Address
-            </label>
+            <label className="block mb-2 text-sm font-semibold text-gray-700">Last Name</label>
             <input
-              id="email"
+              type="text"
+              value={lname}
+              onChange={(e) => setLname(e.target.value)}
+              placeholder="Doe"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block mb-2 text-sm font-semibold text-gray-700">Email</label>
+            <input
               type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition duration-300"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="john@example.com"
               required
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
 
+          {/* Phone */}
           <div>
-            <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-1">
-              Phone Number
-            </label>
+            <label className="block mb-2 text-sm font-semibold text-gray-700">Phone</label>
             <input
-              id="phone"
               type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition duration-300"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="+91 9876543210"
               required
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
 
+          {/* Gender */}
           <div>
-            <span className="block text-sm font-semibold text-gray-700 mb-2">Gender</span>
-            <div className="flex space-x-6">
-              <label className="inline-flex items-center cursor-pointer">
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Male"
-                  checked={formData.gender === "Male"}
-                  onChange={handleChange}
-                  className="w-5 h-5 text-blue-600 border-gray-300 focus:ring-blue-500"
-                />
-                <span className="ml-2 text-gray-700">Male</span>
-              </label>
-              <label className="inline-flex items-center cursor-pointer">
-                <input
-                  type="radio"
-                  name="gender"
-                  value="Female"
-                  checked={formData.gender === "Female"}
-                  onChange={handleChange}
-                  className="w-5 h-5 text-blue-600 border-gray-300 focus:ring-blue-500"
-                />
-                <span className="ml-2 text-gray-700">Female</span>
-              </label>
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="std" className="block text-sm font-semibold text-gray-700 mb-1">
-              Standard
-            </label>
-            <select
-              id="std"
-              name="std"
-              value={formData.std}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition duration-300"
-              required
-            >
-              <option value="" disabled>Select Standard</option>
-              {allStd.map((stdOption, idx) => (
-                <option key={idx} value={stdOption}>
-                  {stdOption}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <span className="block text-sm font-semibold text-gray-700 mb-2">Hobbies</span>
-            <div className="flex flex-wrap gap-4">
-              {["Reading", "Writing", "Sleeping"].map((h, idx) => (
-                <label key={idx} className="inline-flex items-center cursor-pointer">
+            <label className="block mb-2 text-sm font-semibold text-gray-700">Gender</label>
+            <div className="flex gap-6">
+              {["Male", "Female"].map((g) => (
+                <label key={g} className="inline-flex items-center text-gray-700">
                   <input
-                    type="checkbox"
-                    value={h}
-                    onChange={handleHobbyChange}
-                    checked={formData.hobby.includes(h)}
-                    className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    type="radio"
+                    value={g}
+                    checked={gender === g}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="mr-2"
                   />
-                  <span className="ml-2 text-gray-700">{h}</span>
+                  {g}
                 </label>
               ))}
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition duration-300 shadow-lg transform hover:scale-[1.01]"
-          >
-            Submit
-          </button>
+          {/* Standard */}
+          <div>
+            <label className="block mb-2 text-sm font-semibold text-gray-700">Standard</label>
+            <select
+              value={std}
+              onChange={(e) => setStd(e.target.value)}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            >
+              <option value="">Select Class</option>
+              {allStd.map((s, i) => (
+                <option key={i} value={s}>{s}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Hobbies */}
+          <div className="md:col-span-2">
+            <label className="block mb-2 text-sm font-semibold text-gray-700">Hobbies</label>
+            <div className="flex flex-wrap gap-6">
+              {["Cooking", "Dancing", "Traveling"].map((h) => (
+                <label key={h} className="inline-flex items-center text-gray-700">
+                  <input
+                    type="checkbox"
+                    value={h}
+                    checked={hobby.includes(h)}
+                    onChange={handleHobbyChange}
+                    className="mr-2"
+                  />
+                  {h}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="md:col-span-2">
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-indigo-500 to-blue-600 text-white py-3 rounded-xl text-lg font-semibold hover:opacity-90 transition-all duration-300"
+            >
+              🚀 Register Student
+            </button>
+          </div>
         </form>
       </div>
     </div>
   );
 }
 
-export default StudentForm;
+export default SubmitStudents;
