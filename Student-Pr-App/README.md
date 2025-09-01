@@ -1,69 +1,54 @@
-# React + TypeScript + Vite
+🎓 Student Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Student Portal built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+This project demonstrates how to manage student data using modern frontend technologies including React functional components, TypeScript for type safety, Tailwind CSS for responsive styling, and React Hooks for state management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
+📌 Navbar with Hero Section
 
-## Expanding the ESLint configuration
+Responsive navigation bar with links.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Hero section introducing the Student Portal.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+📝 Student Registration Form
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Collects student details: First Name, Last Name, Email, Password, Phone, Gender, Department, and Subjects.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Input validation handled through React state management.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Supports multiple subject selections using checkboxes.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+📊 Student Dashboard Table
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Displays registered student information in a responsive table.
+
+Toggle between registration form view and table view.
+
+🎨 Styling
+
+Fully responsive layout using Tailwind CSS.
+
+Includes styles compatible with dark mode.
+
+⚡ State Management
+
+Uses React Hooks (useState) for managing form data and application state.
+
+On form submission, data is cleared and added to the table.
+
+🛠️ Tech Stack
+
+⚛️ React (Functional Components)
+
+🟦 TypeScript (Static Typing)
+
+🎨 Tailwind CSS (Utility-First CSS)
+
+⚡ Vite (Frontend Build Tool)
+
+🔗 Social Links
+
+💼 LinkedIn
+
+👨‍💻 GitHub
