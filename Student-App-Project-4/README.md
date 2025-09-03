@@ -62,7 +62,7 @@ student-portal-app/
 ---
 
 ## 📸 Output
-![App Screenshot](public/output.jpeg)  
+![App Screenshot](public/output.png)  
 *Student Registration Form & Registered Students Table*
 
 ---
