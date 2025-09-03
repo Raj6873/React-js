@@ -188,7 +188,7 @@ const StudentForm = () => {
           <div className="md:col-span-2">
             <label className="block mb-2 text-sm font-medium text-gray-700">Hobbies</label>
             <div className="flex flex-wrap gap-6">
-              {["Cooking", "Dancing", "Traveling"].map((h) => (
+              {["Codinig","Sleeping", "Dancing", "Traveling"].map((h) => (
                 <label key={h} className="inline-flex items-center text-gray-700 text-sm">
                   <input
                     type="checkbox"
