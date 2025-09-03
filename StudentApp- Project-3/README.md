@@ -1,54 +1,92 @@
-🎓 Student Portal
+# 🎓 Student Portal App
 
-A simple Student Portal built with React, TypeScript, and Tailwind CSS.
+A modern **React JS** project for managing student registrations.  
+This app allows users to register students with details like **First Name, Last Name, Email, Phone, Gender, Standard, and Hobbies**.  
+All registered students are displayed in a stylish, responsive table.
 
-This project demonstrates how to manage student data using modern frontend technologies including React functional components, TypeScript for type safety, Tailwind CSS for responsive styling, and React Hooks for state management.
+---
 
-🚀 Features
-📌 Navbar with Hero Section
+## 🚀 Features
+- 📝 Student Registration Form  
+- ✅ Input validation (HTML5 form validations)  
+- 👨‍🎓 Gender selection (radio buttons)  
+- 🎯 Dropdown for selecting standard/class  
+- 🎨 Multiple hobbies selection (checkboxes)  
+- 📊 Registered students displayed in a formatted table  
+- 💻 Clean and responsive UI  
 
-Responsive navigation bar with links.
+---
 
-Hero section introducing the Student Portal.
+## 📂 Project Structure
+```
+student-portal-app/
+│-- public/
+│   └── output.jpeg        # Project screenshot
+│-- src/
+│   ├── components/        # Form & Table components
+│   ├── App.js
+│   └── index.js
+│-- package.json
+│-- README.md
+```
 
-📝 Student Registration Form
+---
 
-Collects student details: First Name, Last Name, Email, Password, Phone, Gender, Department, and Subjects.
+## 🛠️ Installation and Setup
 
-Input validation handled through React state management.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Raj6873/React-js.git
+   ```
 
-Supports multiple subject selections using checkboxes.
+2. **Navigate into the project**
+   ```bash
+   cd student-portal-app
+   ```
 
-📊 Student Dashboard Table
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Displays registered student information in a responsive table.
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-Toggle between registration form view and table view.
+5. **Open in browser**
+   ```
+   http://localhost:5173
+   ```
 
-🎨 Styling
+---
 
-Fully responsive layout using Tailwind CSS.
+## 📸 Output
+![App Screenshot](public/output.png)  
+*Student Registration Form & Registered Students Table*
 
-Includes styles compatible with dark mode.
+---
 
-⚡ State Management
+## 📦 Tech Stack
+- ⚛️ React JS  
+- 🖌️ CSS3  
+- 🌐 HTML5  
 
-Uses React Hooks (useState) for managing form data and application state.
+---
 
-On form submission, data is cleared and added to the table.
+## 🤝 Contributing
+Contributions are always welcome!  
+If you’d like to improve this project:
+1. Fork the repo  
+2. Create a new branch (`feature-new`)  
+3. Commit your changes  
+4. Submit a Pull Request  
 
-🛠️ Tech Stack
+---
 
-⚛️ React (Functional Components)
+## 📜 License
+This project is licensed under the **MIT License**.
 
-🟦 TypeScript (Static Typing)
+---
 
-🎨 Tailwind CSS (Utility-First CSS)
-
-⚡ Vite (Frontend Build Tool)
-
-🔗 Social Links
-
-💼 LinkedIn
-
-👨‍💻 GitHub
+✨ Made with ❤️ using React
