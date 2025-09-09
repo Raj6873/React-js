@@ -49,6 +49,22 @@ const TableCell = ({ children }: { children: React.ReactNode }) => (
 
 const allStandards = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th"];
 
+const THEME_KEY = "student_app_theme";
+const themeGradients: { [key: string]: string } = {
+  red: "bg-gradient-to-br from-red-200 via-red-100 to-pink-200",
+  skyblue: "bg-gradient-to-br from-sky-200 via-blue-100 to-sky-100",
+  green: "bg-gradient-to-br from-green-200 via-green-100 to-lime-100",
+  pink: "bg-gradient-to-br from-pink-200 via-pink-100 to-fuchsia-100",
+  orange: "bg-gradient-to-br from-orange-200 via-yellow-100 to-orange-100",
+  violet: "bg-gradient-to-br from-violet-200 via-purple-100 to-indigo-100",
+  teal: "bg-gradient-to-br from-teal-200 via-cyan-100 to-teal-100",
+  yellow: "bg-gradient-to-br from-yellow-200 via-yellow-100 to-amber-100",
+  gray: "bg-gradient-to-br from-gray-200 via-gray-100 to-zinc-100",
+};
+const themeNames = ["red", "skyblue", "green", "pink", "orange", "violet", "teal", "yellow", "gray"];
+
+const LOCAL_STORAGE_KEY = "student_app_students";
+
 const StudentForm = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [firstName, setFirstName] = useState("");
@@ -59,6 +75,32 @@ const StudentForm = () => {
   const [standard, setStandard] = useState("");
   const [hobbies, setHobbies] = useState<string[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  // Always start with light color (skyblue) on refresh
+  const [theme, setTheme] = useState<string>("skyblue");
+
+  // Load students from localStorage on mount (but NOT theme)
+  useEffect(() => {
+    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (stored) {
+      try {
+        setStudents(JSON.parse(stored));
+      } catch {
+        setStudents([]);
+      }
+    }
+    // Always reset theme to skyblue on refresh
+    setTheme("skyblue");
+  }, []);
+
+  // Save students to localStorage whenever students change
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(students));
+  }, [students]);
+
+  // Save theme to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem(THEME_KEY, theme);
+  }, [theme]);
 
   // Use useEffect to update form fields when editingIndex changes
   useEffect(() => {
@@ -139,8 +181,42 @@ const StudentForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 px-4 py-12">
+    <div className={`min-h-screen px-4 py-12 ${themeGradients[theme] || themeGradients["skyblue"]}`}>
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
+      {/* Theme color buttons - fixed vertical right side */}
+      <div className="fixed top-1/2 right-4 z-50 flex flex-col gap-3 -translate-y-1/2">
+        {themeNames.map((t) => (
+          <button
+            key={t}
+            onClick={() => setTheme(t)}
+            className={`w-10 h-10 rounded-full border-2 transition-transform duration-200 ${theme === t ? "border-black scale-110" : "border-transparent"}`}
+            style={{
+              background:
+                t === "red"
+                  ? "linear-gradient(90deg, #f87171 0%, #fbbf24 100%)"
+                  : t === "skyblue"
+                  ? "linear-gradient(90deg, #38bdf8 0%, #a5b4fc 100%)"
+                  : t === "green"
+                  ? "linear-gradient(90deg, #4ade80 0%, #bef264 100%)"
+                  : t === "pink"
+                  ? "linear-gradient(90deg, #f472b6 0%, #fbcfe8 100%)"
+                  : t === "orange"
+                  ? "linear-gradient(90deg, #fdba74 0%, #fef08a 100%)"
+                  : t === "violet"
+                  ? "linear-gradient(90deg, #a78bfa 0%, #c4b5fd 100%)"
+                  : t === "teal"
+                  ? "linear-gradient(90deg, #5eead4 0%, #bae6fd 100%)"
+                  : t === "yellow"
+                  ? "linear-gradient(90deg, #fde68a 0%, #fef9c3 100%)"
+                  : t === "gray"
+                  ? "linear-gradient(90deg, #e5e7eb 0%, #f3f4f6 100%)"
+                  : undefined,
+              boxShadow: theme === t ? "0 0 0 2px #000" : undefined,
+            }}
+            aria-label={t + " theme"}
+          />
+        ))}
+      </div>
       <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden p-10">
         <h2 className="text-4xl font-extrabold text-center text-indigo-800 mb-8 tracking-wide">
           🎓 Student Registration
