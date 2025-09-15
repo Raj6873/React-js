@@ -19,32 +19,44 @@ const InputField = ({
   value,
   setValue,
   type = "text",
+  placeholder = "",
 }: {
   label: string;
   value: string;
   setValue: (val: string) => void;
   type?: string;
+  placeholder?: string;
 }) => (
-  <div>
-    <label className="block mb-2 text-sm font-medium text-gray-700">{label}</label>
+  <div className="relative z-0 w-full mb-6 group">
     <input
       type={type}
       value={value}
       onChange={(e) => setValue(e.target.value)}
       required
-      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-indigo-600 peer"
+      placeholder=" "
     />
+    <label
+      htmlFor={label}
+      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-full peer-focus:text-indigo-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      {label}
+    </label>
   </div>
 );
 
 // Reusable TableHead component
 const TableHead = ({ title }: { title: string }) => (
-  <th className="py-3 px-4 text-left border-b font-semibold">{title}</th>
+  <th scope="col" className="py-3 px-6 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+    {title}
+  </th>
 );
 
 // Reusable TableCell component
 const TableCell = ({ children }: { children: React.ReactNode }) => (
-  <td className="py-3 px-4 border-b">{children}</td>
+  <td className="py-4 px-6 whitespace-nowrap text-sm text-gray-800">
+    {children}
+  </td>
 );
 
 const allStandards = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th"];
@@ -75,10 +87,8 @@ const StudentForm = () => {
   const [standard, setStandard] = useState("");
   const [hobbies, setHobbies] = useState<string[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
-  // Always start with light color (skyblue) on refresh
   const [theme, setTheme] = useState<string>("skyblue");
 
-  // Load students from localStorage on mount (but NOT theme)
   useEffect(() => {
     const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (stored) {
@@ -88,21 +98,17 @@ const StudentForm = () => {
         setStudents([]);
       }
     }
-    // Always reset theme to skyblue on refresh
-    setTheme("skyblue");
+    setTheme("skyblue"); // Always start with skyblue on refresh
   }, []);
 
-  // Save students to localStorage whenever students change
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(students));
   }, [students]);
 
-  // Save theme to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
-  // Use useEffect to update form fields when editingIndex changes
   useEffect(() => {
     if (editingIndex !== null) {
       const studentToEdit = students[editingIndex];
@@ -181,15 +187,16 @@ const StudentForm = () => {
   };
 
   return (
-    <div className={`min-h-screen px-4 py-12 ${themeGradients[theme] || themeGradients["skyblue"]}`}>
+    <div className={`min-h-screen px-4 py-12 ${themeGradients[theme] || themeGradients["skyblue"]} font-sans`}>
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
+
       {/* Theme color buttons - fixed vertical right side */}
       <div className="fixed top-1/2 right-4 z-50 flex flex-col gap-3 -translate-y-1/2">
         {themeNames.map((t) => (
           <button
             key={t}
             onClick={() => setTheme(t)}
-            className={`w-10 h-10 rounded-full border-2 transition-transform duration-200 ${theme === t ? "border-black scale-110" : "border-transparent"}`}
+            className={`w-10 h-10 rounded-full border-2 shadow-md transition-transform duration-200 ${theme === t ? "border-indigo-600 scale-110" : "border-gray-300"}`}
             style={{
               background:
                 t === "red"
@@ -211,34 +218,35 @@ const StudentForm = () => {
                   : t === "gray"
                   ? "linear-gradient(90deg, #e5e7eb 0%, #f3f4f6 100%)"
                   : undefined,
-              boxShadow: theme === t ? "0 0 0 2px #000" : undefined,
             }}
             aria-label={t + " theme"}
+            title={`Set ${t} theme`}
           />
         ))}
       </div>
-      <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden p-10">
-        <h2 className="text-4xl font-extrabold text-center text-indigo-800 mb-8 tracking-wide">
-          🎓 Student Registration
+
+      <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden p-8 sm:p-10">
+        <h2 className="text-4xl font-extrabold text-center text-indigo-700 mb-10 tracking-tight leading-tight">
+          <span className="mr-2">🎓</span> Student Registration Form
         </h2>
 
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6" onSubmit={handleSubmit}>
           <InputField label="First Name" value={firstName} setValue={setFirstName} />
           <InputField label="Last Name" value={lastName} setValue={setLastName} />
           <InputField label="Email" type="email" value={email} setValue={setEmail} />
           <InputField label="Phone" type="tel" value={phone} setValue={setPhone} />
 
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700">Gender</label>
-            <div className="flex gap-6">
+            <label className="block mb-3 text-sm font-medium text-gray-700">Gender</label>
+            <div className="flex gap-8">
               {["Male", "Female"].map((g) => (
-                <label key={g} className="inline-flex items-center text-gray-700 text-sm">
+                <label key={g} className="inline-flex items-center text-gray-800 cursor-pointer">
                   <input
                     type="radio"
                     value={g}
                     checked={gender === g}
                     onChange={(e) => setGender(e.target.value)}
-                    className="mr-2 accent-blue-600"
+                    className="form-radio h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500 mr-2"
                   />
                   {g}
                 </label>
@@ -247,31 +255,36 @@ const StudentForm = () => {
           </div>
 
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-700">Standard</label>
-            <select
-              value={standard}
-              onChange={(e) => setStandard(e.target.value)}
-              required
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-            >
-              <option value="">Select Class</option>
-              {allStandards.map((s, i) => (
-                <option key={i} value={s}>{s}</option>
-              ))}
-            </select>
+            <label className="block mb-3 text-sm font-medium text-gray-700">Standard</label>
+            <div className="relative">
+              <select
+                value={standard}
+                onChange={(e) => setStandard(e.target.value)}
+                required
+                className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-indigo-500 transition duration-200"
+              >
+                <option value="">Select Class</option>
+                {allStandards.map((s, i) => (
+                  <option key={i} value={s}>{s}</option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
+            </div>
           </div>
 
           <div className="md:col-span-2">
-            <label className="block mb-2 text-sm font-medium text-gray-700">Hobbies</label>
-            <div className="flex flex-wrap gap-6">
-              {["Codinig","Sleeping", "Dancing", "Traveling"].map((h) => (
-                <label key={h} className="inline-flex items-center text-gray-700 text-sm">
+            <label className="block mb-3 text-sm font-medium text-gray-700">Hobbies</label>
+            <div className="flex flex-wrap gap-x-8 gap-y-3">
+              {["Coding", "Sleeping", "Dancing", "Traveling", "Reading", "Gaming"].map((h) => (
+                <label key={h} className="inline-flex items-center text-gray-800 cursor-pointer">
                   <input
                     type="checkbox"
                     value={h}
                     checked={hobbies.includes(h)}
                     onChange={handleHobbyChange}
-                    className="mr-2 accent-purple-600"
+                    className="form-checkbox h-4 w-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500 mr-2"
                   />
                   {h}
                 </label>
@@ -279,10 +292,10 @@ const StudentForm = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2 flex gap-4">
+          <div className="md:col-span-2 flex flex-col sm:flex-row gap-4 mt-4">
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 rounded-xl text-lg font-semibold hover:shadow-xl hover:opacity-90 transition-all duration-300"
+              className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-3 px-6 rounded-xl text-lg font-semibold hover:from-indigo-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
             >
               {editingIndex !== null ? "✏️ Update Student" : "🚀 Register Student"}
             </button>
@@ -290,7 +303,7 @@ const StudentForm = () => {
               <button
                 type="button"
                 onClick={clearForm}
-                className="w-1/3 bg-gray-500 text-white py-3 rounded-xl text-lg font-semibold hover:bg-gray-700 transition-colors"
+                className="sm:w-1/3 bg-gray-400 text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300 shadow-md"
               >
                 Cancel
               </button>
@@ -301,10 +314,12 @@ const StudentForm = () => {
 
       {students.length > 0 && (
         <div className="mt-12 max-w-6xl mx-auto bg-white shadow-2xl rounded-3xl p-8">
-          <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">📋 Registered Students</h3>
-          <div className="overflow-auto">
-            <table className="min-w-full text-sm text-gray-800 border border-gray-200 rounded-lg overflow-hidden">
-              <thead className="bg-indigo-100 text-indigo-800">
+          <h3 className="text-3xl font-bold text-center mb-8 text-gray-800">
+            <span className="mr-2">📋</span> Registered Students
+          </h3>
+          <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+            <table className="w-full text-sm text-left text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                   <TableHead title="First Name" />
                   <TableHead title="Last Name" />
@@ -318,7 +333,7 @@ const StudentForm = () => {
               </thead>
               <tbody>
                 {students.map((s, idx) => (
-                  <tr key={idx} className="odd:bg-white even:bg-gray-50 hover:bg-indigo-50 transition">
+                  <tr key={idx} className="bg-white border-b hover:bg-gray-100 transition duration-150 ease-in-out">
                     <TableCell>{s.firstName}</TableCell>
                     <TableCell>{s.lastName}</TableCell>
                     <TableCell>{s.email}</TableCell>
@@ -332,13 +347,13 @@ const StudentForm = () => {
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleEdit(idx)}
-                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-lg text-xs transition-colors"
+                          className="font-medium text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(idx)}
-                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded-lg text-xs transition-colors"
+                          className="font-medium text-red-600 hover:text-red-800 transition duration-150 ease-in-out ml-3"
                         >
                           Delete
                         </button>
@@ -355,4 +370,4 @@ const StudentForm = () => {
   );
 }
 
-export default StudentForm;
+export default StudentForm; 
