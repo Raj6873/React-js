@@ -1,0 +1,155 @@
+{
+  "products": [
+     {
+      "id": "1",
+      "name": "Adidas Sports",
+      "price": "43900",
+      "image": "https://picsum.photos/seed/product1/400/400",
+      "category": "Fashion",
+      "stock": 31,
+      "brand": "Adidas",
+      "rating": 4.6,
+      "reviews": 1739,
+      "warranty": "No Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a sports product from Adidas. It is designed for quality and reliability."
+    },
+    {
+      "id": "2",
+      "name": "Samsung Home & Kitchen",
+      "price": 12006,
+      "image": "https://picsum.photos/seed/product2/400/400",
+      "category": "Home & Kitchen",
+      "stock": 13,
+      "brand": "Samsung",
+      "rating": 3.8,
+      "reviews": 3433,
+      "warranty": "1 Year Manufacturer Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a home & kitchen product from Samsung. It is designed for quality and reliability."
+    },
+    {
+      "id": "3",
+      "name": "HP Sports",
+      "price": 80408,
+      "image": "https://picsum.photos/seed/product3/400/400",
+      "category": "Sports",
+      "stock": 78,
+      "brand": "HP",
+      "rating": 3.7,
+      "reviews": 2257,
+      "warranty": "1 Year Manufacturer Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a sports product from HP. It is designed for quality and reliability."
+    },
+    {
+      "id": "4",
+      "name": "Puma Books",
+      "price": 9214,
+      "image": "https://picsum.photos/seed/product4/400/400",
+      "category": "Books",
+      "stock": 26,
+      "brand": "Puma",
+      "rating": 3.5,
+      "reviews": 1086,
+      "warranty": "1 Year Manufacturer Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a books product from Puma. It is designed for quality and reliability."
+    },
+    {
+      "id": "5",
+      "name": "Sony Electronics",
+      "price": 31238,
+      "image": "https://picsum.photos/seed/product5/400/400",
+      "category": "Electronics",
+      "stock": 51,
+      "brand": "Sony",
+      "rating": 4,
+      "reviews": 106,
+      "warranty": "1 Year Manufacturer Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a electronics product from Sony. It is designed for quality and reliability."
+    },
+    {
+      "id": "6",
+      "name": "Dell Sports",
+      "price": 26607,
+      "image": "https://picsum.photos/seed/product6/400/400",
+      "category": "Sports",
+      "stock": 10,
+      "brand": "Dell",
+      "rating": 4.5,
+      "reviews": 3606,
+      "warranty": "No Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a sports product from Dell. It is designed for quality and reliability."
+    },
+    {
+      "id": "7",
+      "name": "Sony Fashion",
+      "price": 37496,
+      "image": "https://picsum.photos/seed/product7/400/400",
+      "category": "Fashion",
+      "stock": 36,
+      "brand": "Sony",
+      "rating": 3,
+      "reviews": 2497,
+      "warranty": "No Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a fashion product from Sony. It is designed for quality and reliability."
+    }, {
+      "id": "7",
+      "name": "Sony Fashion",
+      "price": 37496,
+      "image": "https://picsum.photos/seed/product7/400/400",
+      "category": "Fashion",
+      "stock": 36,
+      "brand": "Sony",
+      "rating": 3,
+      "reviews": 2497,
+      "warranty": "No Warranty",
+      "features": [
+        "High quality material",
+        "Latest design",
+        "Durable and long-lasting",
+        "Best value for money"
+      ],
+      "description": "This is a fashion product from Sony. It is designed for quality and reliability."
+    }
+
+  ]}

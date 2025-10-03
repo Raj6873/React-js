@@ -5,7 +5,7 @@ export default function Home() {
   // Define new primary text color variables for clarity
   const PRIMARY_TEXT = "#2D2D2D"; // Deep Charcoal for Headings and main text
   const SECONDARY_TEXT = "#686868"; // Softer Gray for descriptions
-  const ACCENT_GOLD = "#B8860B"; // Dark Goldenrod
+  const ACCENT_GOLD = "#c79109ff"; // Dark Goldenrod
 
   const featuredProducts = [
     {
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products */}
+      {/* --- Featured Products --- */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
           {/* Text color applied to heading */}
@@ -95,6 +95,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {featuredProducts.map((item, index) => (
+              // Outer Link: clicking anywhere on the card/details leads to the product page
               <Link
                 to={item.link}
                 key={index}
@@ -108,13 +109,20 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
+                  {/* ******* MODIFICATION: The Quick View Link ******* */}
+                  {/* Inner Link: This is the button that the user wants to click */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <button 
+                    <Link
+                      to={item.link} // Direct link to the product page
                       style={{ color: ACCENT_GOLD }}
-                      className="px-6 py-2 bg-white font-semibold rounded-full shadow-xl text-sm uppercase tracking-wider">
+                      // *** Re-added e.stopPropagation() here to prevent the outer Link from also triggering ***
+                      onClick={(e) => e.stopPropagation()} 
+                      className="px-6 py-2 bg-white font-semibold rounded-full shadow-xl text-sm uppercase tracking-wider z-20" 
+                    >
                       Quick View
-                    </button>
+                    </Link>
                   </div>
+                  {/* ************************************************* */}
                 </div>
 
                 <div className="p-6 text-center">
@@ -198,7 +206,7 @@ export default function Home() {
                 />
                 <div className="p-6 text-left">
                   {/* Text and hover color applied */}
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#B8860B] transition-colors duration-300" style={{ color: PRIMARY_TEXT }}>{post.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#B8860B] transition-colors duration-300" style={{ color: PRIMARY_TEXT}}>{post.title}</h3>
                   {/* Text color applied to description */}
                   <p className="mb-4 text-sm" style={{ color: SECONDARY_TEXT }}>{post.desc}</p>
                   {/* Accent color applied to Read More link */}

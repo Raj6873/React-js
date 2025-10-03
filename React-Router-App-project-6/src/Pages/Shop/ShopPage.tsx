@@ -80,21 +80,29 @@ export default function Shop() {
             key={product.id}
             className="bg-white rounded-xl shadow-xl overflow-hidden transition-transform duration-500 hover:scale-105"
           >
-            <img
-              src={product.img}
-              alt={product.alt}
-              className="w-full h-72 object-cover"
-            />
-            <div className="p-6 text-center">
-              <h3 className="text-xl font-semibold text-[#4A4A4A] mb-2">
-                {product.name}
-              </h3>
+            {/* Wrap image and name in a Link for better UX */}
+            <Link to={`/products/${product.id}`} className="block">
+              <img
+                src={product.img}
+                alt={product.alt}
+                className="w-full h-72 object-cover"
+              />
+              <div className="p-6 pb-2 text-center">
+                <h3 className="text-xl font-semibold text-[#4A4A4A] mb-2 hover:text-[#B8860B] transition-colors duration-300">
+                  {product.name}
+                </h3>
+              </div>
+            </Link>
+            
+            {/* Price and Add to Cart Button */}
+            <div className="p-6 pt-0 text-center">
               <p className="text-gray-600 font-medium text-lg mb-4">
                 {product.price}
               </p>
               <Link
                 to="/cart"
                 className="w-full inline-block px-6 py-3 bg-[#B8860B] text-white font-semibold rounded-full hover:bg-[#A67D0A] transition-colors duration-300"
+                // The 'Add to Cart' button would typically use a non-Link button and an onClick handler in a real app
               >
                 Add to Cart
               </Link>
