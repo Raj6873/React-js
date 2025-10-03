@@ -1,6 +1,6 @@
 {
   "products": [
-     {
+    {
       "id": "1",
       "name": "Adidas Sports",
       "price": "43900",
@@ -58,44 +58,6 @@
       "description": "This is a sports product from HP. It is designed for quality and reliability."
     },
     {
-      "id": "4",
-      "name": "Puma Books",
-      "price": 9214,
-      "image": "https://picsum.photos/seed/product4/400/400",
-      "category": "Books",
-      "stock": 26,
-      "brand": "Puma",
-      "rating": 3.5,
-      "reviews": 1086,
-      "warranty": "1 Year Manufacturer Warranty",
-      "features": [
-        "High quality material",
-        "Latest design",
-        "Durable and long-lasting",
-        "Best value for money"
-      ],
-      "description": "This is a books product from Puma. It is designed for quality and reliability."
-    },
-    {
-      "id": "5",
-      "name": "Sony Electronics",
-      "price": 31238,
-      "image": "https://picsum.photos/seed/product5/400/400",
-      "category": "Electronics",
-      "stock": 51,
-      "brand": "Sony",
-      "rating": 4,
-      "reviews": 106,
-      "warranty": "1 Year Manufacturer Warranty",
-      "features": [
-        "High quality material",
-        "Latest design",
-        "Durable and long-lasting",
-        "Best value for money"
-      ],
-      "description": "This is a electronics product from Sony. It is designed for quality and reliability."
-    },
-    {
       "id": "6",
       "name": "Dell Sports",
       "price": 26607,
@@ -132,7 +94,8 @@
         "Best value for money"
       ],
       "description": "This is a fashion product from Sony. It is designed for quality and reliability."
-    }, {
+    },
+    {
       "id": "7",
       "name": "Sony Fashion",
       "price": 37496,
@@ -151,5 +114,5 @@
       ],
       "description": "This is a fashion product from Sony. It is designed for quality and reliability."
     }
-
-  ]}
+  ]
+}
